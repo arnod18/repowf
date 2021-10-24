@@ -30,6 +30,7 @@ jobs:
       - name: Download a file
         run: |
           ls -l ${{ github.workspace }}
-          wget https://github.com/Embodied-Inc/bo-test-suite/releases/download/v3.4.5/3004005-factory.zip -P ${{ github.workspace }}
+          $PWD
+          mkdir testdir
           ls -l ${{ github.workspace }}
 
