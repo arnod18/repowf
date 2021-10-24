@@ -29,22 +29,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the release version
-        run: echo "release ${{ github.event.inputs.release }}"
+        run: |
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          git_branch=${GITHUB_REF#refs/heads/}
+          echo "🔎 Branch ${{ github.ref }} Recheck $git_branch Commit $git_hash"
+          echo "🔎 Input release ${{ github.event.inputs.release }}"
         
       - name: Check out repository
         uses: actions/checkout@v2
-        
-      - name: Download azcopy
-        run: |
-          mkdir scripts && cd ./scripts
-          AZCOPY_STATIC_URL="https://azcopyvnext.azureedge.net/release20210616/azcopy_linux_amd64_10.11.0.tar.gz"
-          wget -O azcopy_v10.tar.gz $AZCOPY_STATIC_URL && tar -xf azcopy_v10.tar.gz --strip-components=1
+        with:
+            ref: main
 
-      - name: Sync files
-        working-directory: ./3004005
+      - name: Print the release version
         run: |
-          for d in */ ; do
-              echo "Releasing: $d"
-              ../scripts/azcopy sync "$d" "https://manufacturingdata.blob.core.windows.net/data/PP/BodyAssyTest/0000000000000/$d?${{ github.event.inputs.token }}" --put-md5 --exclude-pattern=".DS_Store" --delete-destination="true"
-          done
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          git_branch=${GITHUB_REF#refs/heads/}
+          echo "🔎 Branch ${{ github.ref }} Recheck $git_branch Commit $git_hash"
+          echo "🔎 Input release ${{ github.event.inputs.release }}"
+
+#       - name: Download azcopy
+#         run: |
+#           mkdir scripts && cd ./scripts
+#           AZCOPY_STATIC_URL="https://azcopyvnext.azureedge.net/release20210616/azcopy_linux_amd64_10.11.0.tar.gz"
+#           wget -O azcopy_v10.tar.gz $AZCOPY_STATIC_URL && tar -xf azcopy_v10.tar.gz --strip-components=1
+
+#       - name: Sync files
+#         working-directory: ./3004005
+#         run: |
+#           for d in */ ; do
+#               echo "Releasing: $d"
+#               ../scripts/azcopy sync "$d" "https://manufacturingdata.blob.core.windows.net/data/PP/BodyAssyTest/0000000000000/$d?${{ github.event.inputs.token }}" --put-md5 --exclude-pattern=".DS_Store" --delete-destination="true"
+#           done
 
