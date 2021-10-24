@@ -29,9 +29,7 @@ jobs:
         
       - name: Download a file
         run: |
-          echo "🎉 Location options ${{ github.workspace }}"
           ls -l ${{ github.workspace }}
-          #wget https://github.com/Embodied-Inc/bo-test-suite/releases/download/v3.4.5/3004005-factory.zip -P ~/Downloads
-          wget https://itpresent.com/web/tutorials/html/html_language_tutorial.pdf -P ${{ github.workspace }}
+          wget https://github.com/Embodied-Inc/bo-test-suite/releases/download/v3.4.5/3004005-factory.zip -P ${{ github.workspace }}
           ls -l ${{ github.workspace }}
 
