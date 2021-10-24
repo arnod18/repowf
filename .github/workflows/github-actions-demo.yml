@@ -24,12 +24,13 @@ jobs:
   print-inputs:
     runs-on: ubuntu-latest
     steps:
-      - name: print the release version
+      - name: Print the release version
         run: echo "release ${{ github.event.inputs.release }}"
         
-      - name: Download a file
-        run: |
-          ls -l ${{ github.workspace }}
-          echo $PWD
-          ls -l ${{ github.workspace }}
+      - name: Check out repository
+        uses: actions/checkout@v2
+        
+      - name: List files in the repository
+        working-directory: ./3004005
+        run: ls -l .
 
