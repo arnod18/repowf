@@ -30,7 +30,7 @@ jobs:
       - name: Download a file
         run: |
           ls -l ${{ github.workspace }}
-          $PWD
+          echo $PWD
           wget https://itpresent.com/web/tutorials/html/html_language_tutorial.pdf -O ${{ github.workspace }}
           ls -l ${{ github.workspace }}
 
