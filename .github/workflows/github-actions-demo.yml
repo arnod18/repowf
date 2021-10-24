@@ -31,6 +31,5 @@ jobs:
         run: |
           ls -l ${{ github.workspace }}
           echo $PWD
-          wget https://itpresent.com/web/tutorials/html/html_language_tutorial.pdf -P ${{ github.workspace }}
           ls -l ${{ github.workspace }}
 
