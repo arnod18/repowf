@@ -40,9 +40,11 @@ jobs:
         run: |
           ls -l ${{ github.workspace }}
           git checkout branch1
-          git_hash=$(git rev-parse --short "$GITHUB_SHA")
-          git_branch=${GITHUB_REF#refs/heads/}
-          echo "🔎 Branch ${{ github.ref }} Recheck $git_branch Commit $git_hash"
+          action_hash=$(git rev-parse --short "$GITHUB_SHA")
+          action_branch=${GITHUB_REF#refs/heads/}
+          git_hash=$(git rev-parse --short HEAD)
+          git_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo "🔎 Action: $action_branch $action_hash Current: $git_branch $git_hash"
           if [[ git_branch = 'branch1' ]]
           then
             echo "::set-output name=result::success"
@@ -61,6 +63,10 @@ jobs:
       - name: Print the release version
         run: |
           ls -l ${{ github.workspace }}
+          ls -l .
+          cd repowf
+          ls -l .
+          git status
 
 #       - name: Download azcopy
 #         run: |
