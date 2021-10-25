@@ -64,9 +64,6 @@ jobs:
         run: |
           ls -l ${{ github.workspace }}
           ls -l .
-          cd repowf
-          ls -l .
-          git status
 
 #       - name: Download azcopy
 #         run: |
