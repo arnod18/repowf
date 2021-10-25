@@ -27,7 +27,7 @@ jobs:
 
   check:
     outputs:
-      result: ${{ steps.early.result }}
+      result: ${{ steps.early.outputs.result }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
