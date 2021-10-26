@@ -37,5 +37,6 @@ jobs:
           chmod +x ./scripts/py1.py
           ./scripts/py1.py
           sudo apt install -y libsecret-tools
+          export SFDX_USE_GENERIC_KEYCHAIN=true
           echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
           secret-tool lookup Test tool
