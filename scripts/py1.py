@@ -17,11 +17,11 @@ import zipfile
 import os
 import glob
 import getpass
-from githubRelease import doGithubRelease
 logger = logging.getLogger(__name__)
 
 import argparse, glob, json, re, subprocess, urllib.request, os, sys
 from sys import platform
 from pathlib import Path
 
-print(f'From python {sys.version_info}')
+print(f'py1 print {sys.version_info}')
+logger.info("py1 info")
