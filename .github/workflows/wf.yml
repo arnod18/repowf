@@ -34,7 +34,7 @@ jobs:
 
       - name: Test tool
         run: |
-          sudo ./scripts/py1.py
+          #./scripts/py1.py
           sudo apt install -y secret-tool
           echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
           secret-tool lookup Test tool
