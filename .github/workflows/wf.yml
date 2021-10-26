@@ -34,5 +34,6 @@ jobs:
 
       - name: Test tool
         run: |
+          sudo pip install numpy
           chmod +x ./scripts/py1.py
           ./scripts/py1.py
