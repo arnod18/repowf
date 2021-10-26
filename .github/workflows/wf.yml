@@ -34,9 +34,5 @@ jobs:
 
       - name: Test tool
         run: |
-          sudo apt install -y libsecret-tools
-          echo $DBUS_SESSION_BUS_ADDRESS
-          export $(dbus-launch)
-          echo $DBUS_SESSION_BUS_ADDRESS
           chmod +x ./scripts/py1.py
           ./scripts/py1.py
