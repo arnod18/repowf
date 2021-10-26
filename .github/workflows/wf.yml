@@ -27,15 +27,14 @@ jobs:
           git_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "🔎 Action checkout: $action_branch $action_hash Current checkout: $git_branch $git_hash"
 
-      - name: Set up JDK
-        uses: actions/setup-java@v1
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          java-version: 1.8
+          python-version: 3.8.9
 
-      - name: Setup NDK
+      - name: Test tool
         run: |
-          echo $ANDROID_HOME
-          echo $JAVA_HOME
-          whereis sdkmanager
-          sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
-
+          ./scripts/py1.py
+          sudo apt install -y secret-tool
+          echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
+          secret-tool lookup Test tool
