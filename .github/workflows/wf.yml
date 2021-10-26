@@ -38,4 +38,4 @@ jobs:
           ./scripts/py1.py
           sudo apt install -y libsecret-tools
           echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
-          echo $(secret-tool lookup Test tool)
+          #echo $(secret-tool lookup Test tool)
