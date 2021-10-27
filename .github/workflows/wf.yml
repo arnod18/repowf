@@ -10,6 +10,13 @@ jobs:
   jobwf:
     runs-on: ubuntu-latest
     steps:
+      - name: Install
+        run: |
+          apt update && apt install -y dbus-x11 libsecret-tools
+          dbus-launch --sh-syntax
+          echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
+          secret-tool lookup Test tool
+        
       - name: Print release version
         run: echo "🔎 Input release ${{ github.event.inputs.release }}"
         
