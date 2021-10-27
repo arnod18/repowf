@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Install
         run: |
-          apt update && apt install -y dbus-x11 libsecret-tools
+          sudo apt update && sudo apt install -y dbus-x11 libsecret-tools
           dbus-launch --sh-syntax
           echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
           secret-tool lookup Test tool
