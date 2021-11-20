@@ -58,4 +58,6 @@ jobs:
       - name: Setup NDK
         run: |
           echo "🔎 Setup NDK ANDROID_HOME: ${ANDROID_HOME}"
+          cat ${ANDROID_HOME}/ndk-bundle/source.properties
           sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
+          cat ${ANDROID_HOME}/ndk-bundle/source.properties
