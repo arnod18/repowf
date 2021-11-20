@@ -50,10 +50,10 @@ jobs:
           chmod +x ./scripts/py1.py
           ./scripts/py1.py
 
-      - name: Set up JDK
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
+#       - name: Set up JDK
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: 1.8
 
       - name: Setup NDK
         run: |
