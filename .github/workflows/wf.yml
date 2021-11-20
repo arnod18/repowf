@@ -10,12 +10,12 @@ jobs:
   jobwf:
     runs-on: ubuntu-latest
     steps:
-      - name: Install
-        run: |
-          sudo apt update && sudo apt install -y dbus-x11 libsecret-tools
-          dbus-launch --sh-syntax
-          echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
-          secret-tool lookup Test tool
+#       - name: Install
+#         run: |
+#           sudo apt update && sudo apt install -y dbus-x11 libsecret-tools
+#           dbus-launch --sh-syntax
+#           echo -n 'Itsme' | secret-tool store --label='Test tool' Test tool
+#           secret-tool lookup Test tool
         
       - name: Print release version
         run: echo "🔎 Input release ${{ github.event.inputs.release }}"
@@ -49,3 +49,13 @@ jobs:
         run: |
           chmod +x ./scripts/py1.py
           ./scripts/py1.py
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Setup NDK
+        run: |
+          echo "🔎 Setup NDK ANDROID_HOME: ${ANDROID_HOME}"
+          sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
